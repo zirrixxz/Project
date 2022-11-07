@@ -1,0 +1,286 @@
+<h2>Depression Assessment Form PATIENT HEALTH QUESTIONNAIRE-9 (PHQ-9) </h2>
+
+<mat-stepper linear #stepper>
+  <mat-step label="Fill out your Info">
+
+    <!-- <ng-template matStepLabel></ng-template> -->
+
+    <div class="row">
+
+
+
+
+
+
+      <div class="col-12">
+
+        <div class="card w-100">
+          <div class="border-bottom p-3">
+            <h4 class="card-title mb-0">Personal Info</h4>
+            <small class="text-mute">Fill in your required information</small>
+
+          </div>
+          <label class="radio" id="example-radio-group-label">What is your is gender?</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="favgender">
+            <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+              {{gender}}
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">Which year are you in?</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="favyear">
+            <mat-radio-button class="example-radio-button" *ngFor="let year of years" [value]="year">
+              {{year}}
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">What Faculty of study are you in?</label>
+          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="favstudy">
+            <mat-radio-button class="example-radio-button" *ngFor="let study of studys" [value]="study">
+              {{study}}
+            </mat-radio-button>
+          </mat-radio-group>
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+    <div>
+
+
+      <button class="btn btn-next" mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Take a test">
+
+    <!-- <ng-template matStepLabel>Take a Test</ng-template> -->
+    <div class="row">
+
+
+      <div class="col-12">
+
+        <div class="card">
+          <div class="border-bottom p-3">
+
+            <h4 class="card-title mb-0">Counseling</h4>
+            <small class="text-muted fs-3">PATIENT HEALTH QUESTIONNAIRE-9 (PHQ-9)
+              Over the last 2 weeks, how often have you been bothered
+              by any of the following problems?
+              (Use “✔” to indicate your answer)
+            </small>
+          </div>
+          <label class="radio" id="example-radio-group-label">1. Little interest or pleasure in doing things
+            (เบื่อ ทำอะไร ๆ ก็ไม่เพลิดเพลิน)</label>
+
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favfirst" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let first of firsts" [value]="first">
+                {{first}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+
+          <mat-divider></mat-divider>
+
+
+
+
+          <label class="radio" id="example-radio-group-label">2. Feeling down, depressed, or hopeless (ไม่สบายใจ
+            ซึมเศร้า หรือท้อแท้)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favsecond" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let second of seconds" [value]="second">
+                {{second}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">3. Trouble falling or staying asleep, or sleeping too much
+            ( หลับยาก หรือหลับ ๆ ตื่น ๆ หรือหลับมากไป)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favthird" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let third of thirds" [value]="third">
+                {{third}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">4. Feeling tired or having little energy ( เหนื่อยง่าย
+            หรือไม่ค่อยมีแรง)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favfour" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let four of fours" [value]="four">
+                {{four}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">5. Poor appetite or overeating ( เบื่ออาหาร
+            หรือกินมากเกินไป)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favfive" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let five of fives" [value]="five">
+                {{five}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">6. Feeling bad about yourself — or that you are a failure
+            or have let yourself or your family down ( รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลว หรือเป็นคนทำให้ตัวเอง
+            หรือครอบครัวผิดหวัง)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favsix" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let six of sixs" [value]="six">
+                {{six}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">7. Trouble concentrating on things, such as reading the
+            newspaper or watching television (สมาธิไม่ดีเวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ
+            หรือทำงานท่ีต้องใช้ความตั้งใจ)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favseven" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let seven of sevens" [value]="seven">
+                {{seven}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">8. Moving or speaking so slowly that other people could
+            have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more
+            than usual (พูดหรือทำอะไรช้าจนคนอื่นมองเห็น หรือกระสับกระส่ายจนท่านอยู่ไม่นิ่งเหมือนเคย))</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="faveight" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let eight of eights" [value]="eight">
+                {{eight}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label">9. Thoughts that you would be better off dead or of
+            hurting yourself in some way (คิดทำร้ายตนเอง หรือคิดว่าถ้าตาย ๆ ไปเสียคงจะดี)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favnine" class="radio-first-group">not at all
+
+              <mat-radio-button class="example-radio-button" *ngFor="let nine of nines" [value]="nine">
+                {{nine}}
+              </mat-radio-button>Nearly everyday
+            </mat-radio-group>
+          </div>
+
+          <mat-divider></mat-divider>
+
+
+
+          <label class="radio" id="example-radio-group-label"> If you checked off any problems, how difficult have these
+            problems made it for you to do your work, take care of things at home, or get along with other people?
+            (หากคุณตรวจสอบปัญหาใด ๆ ปัญหาเหล่านี้ทำให้คุณทำงาน ดูแลบ้าน หรือเข้าสังคมได้ยากเพียงใด?)</label>
+          <div class="w-fit">
+            <mat-radio-group [(ngModel)]="favten" class="radio-first-group">
+
+              <mat-radio-button class="example-radio-button" *ngFor="let ten of tens" [value]="ten">
+                {{ten}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-pre" mat-button matStepperPrevious>Back</button>
+      <button class="btn btn-next" mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step label="Checked">
+    <div class="row">
+
+
+
+
+
+
+      <div class="col-12">
+
+        <div class="card w-100">
+          <div class="border-bottom p-3">
+            <h4 class="card-title mb-0">Suggestions for assessments and websites</h4>
+            <small class="text-mute">Suggestions for assessments and websites to improve and develop the website for
+              further research</small>
+          </div>
+
+          <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Suggestions for our websites</mat-label>
+              <input matInput placeholder=" " >
+            </mat-form-field>
+          </form>
+
+          <mat-divider></mat-divider>
+
+
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+    <div>
+      <button class="btn" mat-button (click)="stepper.reset()">Reset</button>
+      <button class="btn btn-pre" mat-button matStepperPrevious>Back</button>
+      <button class="btn" mat-button (click)="openDialog()">Done</button>
+    </div>
+  </mat-step>
+
+
+</mat-stepper>
