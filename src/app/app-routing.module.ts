@@ -20,7 +20,11 @@ export const Approutes: Routes = [
       {
         path: 'component',
         loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
-      }
+      },
+      {
+        path: 'login-page',
+        loadChildren: () => import('./login-page/login-page.module').then(m => m.LoginPageModule)
+      },
     ]
   },
   {
