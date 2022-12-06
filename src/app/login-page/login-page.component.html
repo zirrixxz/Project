@@ -4,21 +4,26 @@
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>First name</mat-label>
-            <input matInput>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="username" required>
           </mat-form-field>
         </td>
       </tr>
     </table>
     <td>
-      <mat-form-field class="example-full-width">
-        <mat-label>Long Last Name That Will Be Truncated</mat-label>
-        <input matInput>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" required>
+
       </mat-form-field>
+      <section class="checkbox-section">
+        <mat-checkbox>Remember me</mat-checkbox>
+
+      </section>
     </td>
 
-    <button mat-button>Basic</button>
-    <button mat-button>Basic</button>
+    <button mat-button (click)="onLogin()">Login</button>
+    <a href="#">Foget password?</a>
   </mat-card>
 </main>

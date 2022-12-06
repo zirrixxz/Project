@@ -7,6 +7,7 @@ import { LoginPageComponent } from "./login-page.component";
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -31,6 +32,7 @@ const routes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatInputModule,
+    MatCheckboxModule,
     
   ],
   declarations: [
