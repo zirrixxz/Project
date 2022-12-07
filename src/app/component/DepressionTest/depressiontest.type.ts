@@ -16,3 +16,10 @@ export interface DepressionTestRes {
   lastUpdated: Date;
   testDate: Date;
 }
+export interface DeleteDepressionTestReq{
+  
+id:string 
+
+}
+
+

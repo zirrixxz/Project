@@ -93,4 +93,4 @@ export class DepressionTestComponent {
 export class dialogOverview {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }
-export class DepressionTestModule {}
+export class depressiontest {}

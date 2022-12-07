@@ -27,7 +27,7 @@ export const Approutes: Routes = [
       },
       {
         path: 'depressionTest',
-        loadChildren: () => import('./component/DepressionTest/depressiontest.component').then(m => m.dialogOverview)
+        loadChildren: () => import('./component/DepressionTest/depressiontest.component').then(m => m.depressiontest)
       },
     ]
   },
