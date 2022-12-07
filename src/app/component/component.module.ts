@@ -12,7 +12,7 @@ import { NgbdnavBasicComponent } from './nav/nav.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { CardsComponent } from './card/card.component';
 import { TableComponent } from "./table/table.component";
-import { BadgeComponent } from './badge/badge.component';
+import { DepressionTestComponent } from './DepressionTest/depressiontest.component';
 
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDividerModule} from '@angular/material/divider';
@@ -46,7 +46,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     ButtonsComponent,
     CardsComponent,
     TableComponent,
-    BadgeComponent,
+    DepressionTestComponent
     
     
     

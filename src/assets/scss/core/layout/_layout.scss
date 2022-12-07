@@ -77,7 +77,7 @@ Vertical responsive layout
       .topbar .top-navbar .navbar-header {
         width: $sidebar-width-mini;
         .logo-text {
-          display: none;
+          display: flex;
         }
         &.expand-logo {
           width: $sidebar-width-full;

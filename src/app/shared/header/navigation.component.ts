@@ -95,21 +95,22 @@ export class NavigationComponent implements AfterViewInit {
     type: 'US',
     icon: 'us'
   },
-  {
-    language: 'Español',
-    code: 'es',
-    icon: 'es'
-  },
-  {
-    language: 'Français',
-    code: 'fr',
-    icon: 'fr'
-  },
-  {
-    language: 'German',
-    code: 'de',
-    icon: 'de'
-  }]
+  // {
+  //   language: 'Español',
+  //   code: 'es',
+  //   icon: 'es'
+  // },
+  // {
+  //   language: 'Français',
+  //   code: 'fr',
+  //   icon: 'fr'
+  // },
+  // {
+  //   language: 'German',
+  //   code: 'de',
+  //   icon: 'de'
+  // }
+]
 
   ngAfterViewInit() { }
 }

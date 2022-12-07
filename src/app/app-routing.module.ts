@@ -25,6 +25,10 @@ export const Approutes: Routes = [
         path: 'login-page',
         loadChildren: () => import('./login-page/login-page.module').then(m => m.LoginPageModule)
       },
+      {
+        path: 'depressionTest',
+        loadChildren: () => import('./component/DepressionTest/depressiontest.component').then(m => m.dialogOverview)
+      },
     ]
   },
   {

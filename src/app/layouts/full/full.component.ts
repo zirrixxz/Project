@@ -44,17 +44,17 @@ export class FullComponent implements OnInit {
     }
   }
 
-  toggleSidebarType() {
-    switch (this.sidebartype) {
-      case "full":
-        this.sidebartype = "mini-sidebar";
-        break;
+  // toggleSidebarType() {
+  //   switch (this.sidebartype) {
+  //     case "full":
+  //       this.sidebartype = "mini-sidebar";
+  //       break;
 
-      case "mini-sidebar":
-        this.sidebartype = "full";
-        break;
+  //     case "mini-sidebar":
+  //       this.sidebartype = "full";
+  //       break;
 
-      default:
-    }
-  }
+  //     default:
+  //   }
+  // }
 }

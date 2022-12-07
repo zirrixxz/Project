@@ -13,6 +13,6 @@ export class DepressionTest {
     }
      
     GetDepressionTestByStudent(userId: string) {
-        return this.http.get<DepressionTestRes>(this.rootURL + "/api/DepressionTest/GetDepressionTestbyStudent?userId="+userId);
+        return this.http.get<DepressionTestRes>(this.rootURL + "api/DepressionTest/GetDepressionTestbyStudent?userId="+userId);
     }
 }
