@@ -25,10 +25,7 @@ export const ComponentsRoutes: Routes = [
         path: "pagination",
         component: NgbdpaginationBasicComponent,
       },
-      {
-        path: "depresionTest",
-        component: DepressionTestComponent,
-      },
+     
       {
         path: "alert",
         component: NgbdAlertBasicComponent,

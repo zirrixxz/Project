@@ -1,25 +1,24 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from "@angular/core";
+import { RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ComponentsRoutes } from './component.routing';
-import { NgbdpaginationBasicComponent } from './pagination/pagination.component';
-import { NgbdAlertBasicComponent } from './alert/alert.component';
-import { NgbdDropdownBasicComponent } from './dropdown-collapse/dropdown-collapse.component';
-import { NgbdnavBasicComponent } from './nav/nav.component';
-import { ButtonsComponent } from './buttons/buttons.component';
-import { CardsComponent } from './card/card.component';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { ComponentsRoutes } from "./component.routing";
+import { NgbdpaginationBasicComponent } from "./pagination/pagination.component";
+import { NgbdAlertBasicComponent } from "./alert/alert.component";
+import { NgbdDropdownBasicComponent } from "./dropdown-collapse/dropdown-collapse.component";
+import { NgbdnavBasicComponent } from "./nav/nav.component";
+import { ButtonsComponent } from "./buttons/buttons.component";
+import { CardsComponent } from "./card/card.component";
 import { TableComponent } from "./table/table.component";
-import { DepressionTestComponent } from './DepressionTest/depressiontest.component';
 
-import {MatRadioModule} from '@angular/material/radio';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatRadioModule } from "@angular/material/radio";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatStepperModule } from "@angular/material/stepper";
 
-import {MatInputModule} from '@angular/material/input';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatInputModule } from "@angular/material/input";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   imports: [
@@ -33,10 +32,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatStepperModule,
     MatInputModule,
     MatDialogModule,
-    
-    
-    
-   
   ],
   declarations: [
     NgbdpaginationBasicComponent,
@@ -46,10 +41,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     ButtonsComponent,
     CardsComponent,
     TableComponent,
-    DepressionTestComponent
-    
-    
-    
-  ]
+  ],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}
