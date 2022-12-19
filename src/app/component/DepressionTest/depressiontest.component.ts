@@ -3,9 +3,7 @@ import { FormControl, Validators } from "@angular/forms";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
-export interface DialogData {
-  animal: "panda" | "unicorn" | "lion";
-}
+export interface DialogData {}
 
 @Component({
   templateUrl: "depressiontest.component.html",
@@ -81,7 +79,7 @@ export class DepressionTestComponent {
   openDialog() {
     this.dialog.open(dialogOverview, {
       data: {
-        animal: "panda",
+        
       },
     });
   }

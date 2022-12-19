@@ -1,7 +1,9 @@
 export interface LoginResult {
-  UserId: string; //เอาไปเรียก getCurrentUser
-  IsSuccess: boolean;
-  Message: string;
+  userId: string;
+  isSuccess: boolean;
+  message: string;
+  roleName?: any;
+  token:string;
 }
 export interface LoginReq {
   UserName: string;

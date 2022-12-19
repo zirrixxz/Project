@@ -9,7 +9,7 @@ import {
 @Injectable({
   providedIn: "root",
 })
-export class DepressionTest {
+export class DepressionTestService {
   private rootURL = "https://localhost:7141/";
   constructor(private http: HttpClient) {}
   postDepressionTest(DepressionTest: DepressionTestReq) {
@@ -20,7 +20,7 @@ export class DepressionTest {
   }
 
   GetDepressionTestByStudent(userId: string) {
-    return this.http.get<DepressionTestRes>(
+    return this.http.get<DepressionTestRes[]>(
       this.rootURL +
         "api/DepressionTest/GetDepressionTestbyStudent?userId=" +
         userId

@@ -11,6 +11,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
+
 const routes: Routes = [
   {
     path: "",
@@ -33,6 +34,7 @@ const routes: Routes = [
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
+    
     
   ],
   declarations: [

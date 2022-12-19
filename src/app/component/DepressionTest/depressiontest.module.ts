@@ -8,6 +8,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatInputModule } from "@angular/material/input";
 import { MatStepperModule } from "@angular/material/stepper";
+import { HttpClientModule } from "@angular/common/http";
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
     MatStepperModule,
     MatInputModule,
     MatDialogModule,
+    HttpClientModule
   ],
   declarations: [DepressionTestComponent],
 })

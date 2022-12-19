@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoginPageService } from "./login-page.service";
 import { LoginReq } from "./login-page.type";
 
@@ -11,7 +12,7 @@ export class LoginPageComponent implements OnInit {
   username: string = "";
   password: string = "";
 
-  constructor(private service: LoginPageService) {}
+  constructor(private service: LoginPageService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -22,7 +23,14 @@ export class LoginPageComponent implements OnInit {
     };
     console.log(login);
     this.service.postLoginApi(login).subscribe((response) => {
-      console.log(response.UserId);
+      console.log(response);
+      console.log(response.isSuccess);
+      if (response.isSuccess) {
+        localStorage.setItem("userId", response.userId);
+        this.router.navigate(["/dashboard"]);
+      } else {
+        alert("Can not login");
+      }
     });
   }
 }
