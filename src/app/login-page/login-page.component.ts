@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginPageService } from "./login-page.service";
 import { LoginReq } from "./login-page.type";
@@ -11,6 +12,14 @@ import { LoginReq } from "./login-page.type";
 export class LoginPageComponent implements OnInit {
   username: string = "";
   password: string = "";
+ 
+  
+  loginFormControl = new FormGroup({
+    username: new FormControl("", Validators.required),
+    password: new FormControl("", Validators.required),
+  });
+
+  emailControl = new FormControl("", [Validators.required]);
 
   constructor(private service: LoginPageService, private router: Router) {}
 
@@ -18,19 +27,28 @@ export class LoginPageComponent implements OnInit {
 
   onLogin() {
     let login: LoginReq = {
-      UserName: this.username,
-      Password: this.password,
+      UserName: this.loginFormControl.value.username??"",
+      Password: this.loginFormControl.value.password??"",
     };
     console.log(login);
-    this.service.postLoginApi(login).subscribe((response) => {
-      console.log(response);
-      console.log(response.isSuccess);
-      if (response.isSuccess) {
-        localStorage.setItem("userId", response.userId);
-        this.router.navigate(["/dashboard"]);
-      } else {
-        alert("Can not login");
-      }
-    });
+    if(this.loginFormControl.valid){
+      this.service.postLoginApi(login).subscribe((response) => {
+        console.log(response);
+        console.log(response.isSuccess);
+        if (response.isSuccess) {
+          localStorage.setItem("userId", response.userId);
+          this.router.navigate(["/dashboard"]);
+        } else {
+          alert("Can not login");
+        }
+      });
+    }
+    else{
+      alert("Can not login");
+    }
+ 
+ 
   }
+
+
 }

@@ -1,0 +1,74 @@
+<mat-card class="example-card" id="sopi">
+
+  <mat-card-header>
+    <mat-card-title>Your Profile </mat-card-title>
+    <mat-card-subtitle>You can edit and change your password in here!</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div class="grid">
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="@up.ac.th">
+      </mat-form-field>
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>DateOfBirth</mat-label>
+        <input matInput placeholder="DD/MM/YYYY">
+      </mat-form-field>
+
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Telephone</mat-label>
+        <input matInput placeholder="0888888888">
+      </mat-form-field>
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput #Age maxlength="2" placeholder="XX">
+      </mat-form-field>
+
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Year</mat-label>
+        <input matInput #Year maxlength="1">
+      </mat-form-field>
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Faculty</mat-label>
+        <input matInput placeholder="ICT">
+      </mat-form-field>
+
+
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput #Year maxlength="1" placeholder="xxxxxxxx@up.ac.th">
+      </mat-form-field>
+
+      <mat-form-field class="grid-item" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+    </div>
+
+
+    <div class="mat-button">
+      <button mat-raised-button color="primary" (click)="openDialog()">save</button>
+    </div>
+  </mat-card-content>
+
+</mat-card>

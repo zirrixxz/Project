@@ -1,39 +1,111 @@
-<main class="container" style="margin-top: 10%;">
-  <mat-card class="card-container">
-    <!-- <mat-card-content>Login to Depression Test website -->
-    <div class="w-fit">
+     <section class="vh-100" style="background-color: #C4996C;">
+       <div class="container py-5 h-100">
+         <div class="row d-flex justify-content-center align-items-center h-100">
+           <div class="col col-xl-10">
+             <div class="card" style="border-radius: 1rem;">
+               <div class="row g-0">
+                 <div class="col-md-6 col-lg-5 d-none d-md-block">
+                   <div class="image-style">
+                     <img src="https://www.up.ac.th/th/img/logo.jpg" alt="login form" class="img-fluid"
+                       style="border-radius: 1rem 0 0 1rem;object-position:80%,100%;">
+                   </div>
+                 </div>
+                 <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                   <div class="card-body p-4 p-lg-5 text-black">
+                     <form (ngSubmit)="onLogin()" [formGroup]="loginFormControl">
 
-      <mat-form-field appearance="outline" class="example-full-width" style=" width: 100%;">
-        <mat-label>Username</mat-label>
-        <input matInput [(ngModel)]="username" required>
-      </mat-form-field>
+                       <div class="d-flex align-items-center mb-3 pb-1">
+                         <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                         <span class="h1 fw-bold mb-0">Welcome to depression test website</span>
+                       </div>
 
-      <mat-form-field appearance="outline" class="example-full-width" style=" width: 100%;">
-        <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="password" required>
-
-      </mat-form-field>
-      <section class="checkbox-section">
-        <mat-checkbox>Remember me</mat-checkbox>
-
-      </section>
+                       <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                       <div class="form-outline mb-4">
 
 
-    </div>
-    <!-- </mat-card-content> -->
-    <!-- <td>
-      <mat-form-field appearance="outline" class="example-full-width" style=" width: 100%;">
-        <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="password" required>
+                         <mat-form-field appearance="outline" style=" width: 100%;">
+                           <mat-label>Enter your username</mat-label>
+                           <input matInput placeholder="Enter email" formControlName="username" required>
+                           <mat-error *ngIf="loginFormControl.invalid">
+                             Please provide a valid username.
+                           </mat-error>
+                         </mat-form-field>
 
-      </mat-form-field>
-      <section class="checkbox-section">
-        <mat-checkbox>Remember me</mat-checkbox>
+                       </div>
 
-      </section>
-    </td> -->
+                       <div class="form-outline mb-4">
 
-    <button mat-button (click)="onLogin()" class="button1">Login</button>
-    <a href="#">Foget password?</a>
-  </mat-card>
-</main>
+
+                         <mat-form-field appearance="outline" style=" width: 100%;">
+                           <mat-label>Enter your password</mat-label>
+                           <input matInput type="password" placeholder="Enter password" formControlName="password"
+                             required>
+                           <mat-error *ngIf="loginFormControl.invalid">
+                             Please provide a valid password.
+                           </mat-error>
+                         </mat-form-field>
+
+                       </div>
+
+                       <div class="pt-1 mb-4">
+                         <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+
+                       </div>
+
+                       <a class="small text-muted" href="#!">Forgot password?</a>
+                       <a href="#!" class="small text-muted">Terms of use.</a>
+                       <a href="#!" class="small text-muted">Privacy policy</a>
+                     </form>
+
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <!-- <div class="w-fit">
+
+          <mat-form-field appearance="outline" class="example-full-width" style=" width: 100%;">
+            <mat-label>Enter your username</mat-label>
+            <input matInput [(ngModel)]="username" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="example-full-width" style=" width: 100%;">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+
+          </mat-form-field>
+
+
+          <section class="checkbox-section">
+            <mat-checkbox>Remember me</mat-checkbox>
+
+          </section>
+
+
+        </div>
+      
+
+        <button mat-button (click)="onLogin()" class="button1">Login</button>
+        <a href="#">Foget password?</a> -->
