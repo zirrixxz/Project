@@ -24,6 +24,7 @@ export interface AddUserReq {
 }
 
 export interface AddUserRes{
+  userId(arg0: string, userId: any): unknown;
    Message:string
     isSuccess:boolean
  

@@ -51,7 +51,7 @@ export const Approutes: Routes = [
           import("./component/my-history/my-history.module").then(
             (m) => m.MyHistoryModule
           ),
-      }, 
+      },
       {
         path: "myhistory",
         canActivate: [CanActivateTeam],
@@ -68,7 +68,14 @@ export const Approutes: Routes = [
             (m) => m.ProfileInfoModule
           ),
       },
-    
+      {
+        path: "scoreResult",
+        canActivate: [CanActivateTeam],
+        loadChildren: () =>
+          import("./score-result/score-result.module").then(
+            (m) => m.ScoreResultModule
+          ),
+      },
     ],
   },
   {
