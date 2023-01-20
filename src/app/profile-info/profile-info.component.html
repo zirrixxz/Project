@@ -1,40 +1,84 @@
 <mat-card class="example-card" id="sopi">
 
   <mat-card-header>
-    <mat-card-title>Your Profile </mat-card-title>
-    <mat-card-subtitle>You can edit and change your password in here!</mat-card-subtitle>
+    <mat-card-title style="font-weight: bold;">{{fName}} {{lName}}</mat-card-title>
+    <mat-card-subtitle>Edit your password and check your profile</mat-card-subtitle>
   </mat-card-header>
 
-  <mat-card-content>
+
+  <div class="card-container ">
+    <mat-card style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); " fxLayout="row"
+      fxLayoutAlign="space-around center">
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">Username: </p>
+          <p style="flex-basis: 80%;">{{username}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">Role: </p>
+          <p style="flex-basis: 80%;">{{roleName}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">First name: </p>
+          <p style="flex-basis: 80%;">{{fName}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">Last name: </p>
+          <p style="flex-basis: 80%;">{{lName}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">age: </p>
+          <p style="flex-basis: 80%;">{{age}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">date Of Birth: </p>
+          <p style="flex-basis: 80%;">{{dateOfBirth | date:'mediumDate'}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">year: </p>
+          <p style="flex-basis: 80%;">{{year}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">faculty: </p>
+          <p style="flex-basis: 80%;">{{faculty}}</p>
+        </div>
+        <div style="display: flex; flex-direction: row; margin-left: 20px;">
+          <p style="flex-basis: 20%; font-weight: bold;">phone number: </p>
+          <p style="flex-basis: 80%;">{{phoneNumber}}</p>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card
+      style="margin-top: 20px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  max-width: 700px; ">
+      <div class="col-sm">
+
+        <mat-form-field class="grid-item" appearance="fill" style="width: 80%;">
+          <mat-label>Your old password</mat-label>
+          <input matInput [(ngModel)]="oldPass">
+        </mat-form-field>
+        <mat-form-field class="grid-item" appearance="fill" style="width: 80%;">
+          <mat-label>New Password</mat-label>
+          <input matInput [(ngModel)]="newPass">
+        </mat-form-field>
+
+        <mat-form-field class="grid-item" appearance="fill" style="width: 80%;">
+          <mat-label>Confirm your Password</mat-label>
+          <input matInput [(ngModel)]="changePass" placeholder="Edit password">
+
+        </mat-form-field>
+      </div>
+
+    </mat-card>
+
+  </div>
 
 
+  <br>
 
+  <div class="mat-button">
+    <button mat-raised-button color="primary" (click)="changePassword()">save</button>
+  </div>
 
-
-
-    <mat-form-field class="grid-item" appearance="fill">
-      <mat-label>Username</mat-label>
-      <input matInput #Year maxlength="1" placeholder="xxxxxxxx@up.ac.th">
-    </mat-form-field>
-
-    <mat-form-field class="grid-item" appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput>
-    </mat-form-field>
-
-    <mat-form-field class="grid-item" appearance="fill">
-      <mat-label>Confirm your Password again</mat-label>
-      <input matInput type="password" placeholder="Edit password" formControlName="password" required>
-      <!-- <mat-error *ngIf="loginFormControl.invalid">
-          Please provide a valid password.
-        </mat-error> -->
-    </mat-form-field>
-      
-    <br>
-
-    <div class="mat-button">
-      <button mat-raised-button color="primary" (click)="openDialog()">save</button>
-    </div>
-  </mat-card-content>
 
 </mat-card>

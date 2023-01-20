@@ -4,7 +4,8 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { MyHistoryComponent } from "./my-history.component";
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from "@angular/material/table";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     HttpClientModule,
     MatTableModule,
-    
+    MatDatepickerModule,
   ],
   declarations: [MyHistoryComponent],
 })

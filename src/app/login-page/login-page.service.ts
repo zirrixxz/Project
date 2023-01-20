@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { AddUserReq, AddUserRes, ChangePasswordRes, EditUserReq, LoginReq, LoginResult } from "./login-page.type";
+import { AddUserReq, AddUserRes,  EditUserReq, LoginReq, LoginResult } from "./login-page.type";
 
 
 

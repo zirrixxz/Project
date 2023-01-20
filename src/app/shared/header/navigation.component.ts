@@ -112,11 +112,18 @@ export class NavigationComponent implements AfterViewInit {
     //   icon: 'de'
     // }
   ];
-
+  fName: string = localStorage.getItem("firstName") ?? "";
+  lName: string = localStorage.getItem("lastName") ?? "";
   ngAfterViewInit() {}
 
   logout() {
     localStorage.removeItem("userId");
+    localStorage.removeItem("firstName");
+    localStorage.removeItem("lastName");
+    localStorage.removeItem("roleName");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userName");
+
     this.router.navigate(["/login-page"]);
   }
 }

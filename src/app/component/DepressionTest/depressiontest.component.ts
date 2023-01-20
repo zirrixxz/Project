@@ -2,6 +2,7 @@ import { Component, Inject } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { DialogRef } from "@angular/cdk/dialog";
 
 export interface DialogData {}
 
@@ -82,8 +83,10 @@ export class DepressionTestComponent {
         
       },
     });
+   
   }
 }
+
 @Component({
   selector: "dialog-overview",
   templateUrl: "dialog-overview.html",
@@ -92,3 +95,4 @@ export class dialogOverview {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 }
 export class depressiontest {}
+
