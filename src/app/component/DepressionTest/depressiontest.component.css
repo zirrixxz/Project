@@ -1,54 +1,54 @@
 .example-radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
-    align-items: flex-start;
-    white-space: wrap;
-  
-  }
-  
-  .example-radio-button {
-    margin: 5px;
-    margin-left: 1cm;
-    
-  }
-  
-  .radio{
-    margin: 3px;
-    margin-left: 25px;
-    margin-top: 20px;
-   
-    color: black;
-  
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+  white-space: wrap;
+
+}
+
+.example-radio-button {
+  margin: 5px;
+  margin-left: 1cm;
+
+}
+
+.radio {
+  margin: 3px;
+  margin-left: 25px;
+  margin-top: 20px;
+
+  color: black;
+
+}
 
 
 
-  .mat-stepper-horizontal {
-    margin-top: 8px;
-  }
-  
-  .mat-form-field {
-    margin-top: 16px;
-  }
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
 
-  .radio-first-group{
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-  }
-  
-  .example-form {
-    min-width: 200px;
-    max-width: 100%;
-    width: 100%;
-  
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-   
-.wrap-mat-radio-label{
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.radio-first-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.example-form {
+  min-width: 200px;
+  max-width: 100%;
+  width: 100%;
+
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.wrap-mat-radio-label {
   white-space: normal;
 }

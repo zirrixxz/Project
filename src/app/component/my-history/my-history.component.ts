@@ -32,21 +32,19 @@ export class MyHistoryComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource<DepressionTestRes>();
 
+  campaignOne = new FormGroup({
+    start: new FormControl(new Date(year, month, 13)),
+    end: new FormControl(new Date(year, month, 16)),
+  });
+  campaignTwo = new FormGroup({
+    start: new FormControl(new Date(year, month, 15)),
+    end: new FormControl(new Date(year, month, 19)),
+  });
   moment = moment;
-
-  DateRangePickerComparisonExample() {
-    campaignOne = new FormGroup({
-      start: new FormControl(new Date(year, month, 13)),
-      end: new FormControl(new Date(year, month, 16)),
-    });
-    campaignTwo = new FormGroup({
-      start: new FormControl(new Date(year, month, 15)),
-      end: new FormControl(new Date(year, month, 19)),
-    });
-  }
 
   ngOnInit(): void {
     this.getServiceHistory();
+    console.log(this.campaignOne);
   }
 
   getServiceHistory() {
