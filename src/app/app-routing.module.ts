@@ -53,14 +53,6 @@ export const Approutes: Routes = [
           ),
       },
       {
-        path: "myhistory",
-        canActivate: [CanActivateTeam],
-        loadChildren: () =>
-          import("./component/my-history/my-history.module").then(
-            (m) => m.MyHistoryModule
-          ),
-      },
-      {
         path: "profile-info",
         canActivate: [CanActivateTeam],
         loadChildren: () =>

@@ -12,12 +12,21 @@ import {
 export class DepressionTestService {
   private rootURL = "https://localhost:7141/";
   constructor(private http: HttpClient) {}
-  postDepressionTest(DepressionTest: DepressionTestReq) {
-    return this.http.post<DepressionTestRes>(
-      this.rootURL + "api/DepressionTest/AddDepressionTest",
-      DepressionTest
-    );
+  
+  postAddDepressionTest(depressionTest: DepressionTestReq) {
+    // return this.http.post<DepressionTestRes>(
+    //   this.rootURL +
+    //     "api/DepressionTest/AddDepressionTest" +
+    //     `?UserId=${DepressionTest.userId}&ScoreResult=${DepressionTest.scoreResult}&TestDate=${DepressionTest.TestDate}`,
+    //   DepressionTest
+    //);
+    return this.http.post<DepressionTestRes>(this.rootURL + "api/DepressionTest/AddDepressionTest",depressionTest);    
   }
+
+
+//   postLoginApi(login:LoginReq) {
+//     return this.http.post<LoginResult>(this.rootURL + "api/User/Login",login);
+// }
 
   GetDepressionTestByStudent(userId: string) {
     return this.http.get<DepressionTestRes[]>(
@@ -26,15 +35,7 @@ export class DepressionTestService {
         userId
     );
   }
-  GetDepressionTestByTeacher(startTestDate: Date, endTestDate: Date) {
-    return this.http.get<DepressionTestRes>(
-      this.rootURL +
-        "api/DepressionTest/GetDepressionTestbyTeacher?startTestDate=" +
-        startTestDate +
-        "&endTestDate=" +
-        endTestDate
-    );
-  }
+
   DeleteDepressionTest(DepressionTest: DeleteDepressionTestReq) {
     return this.http.get<DepressionTestRes>(
       this.rootURL + "api/DepressionTest/DeleteDepressionTest" + DepressionTest

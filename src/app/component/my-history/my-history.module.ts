@@ -3,16 +3,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
+// import { MaterialModule } from "app/material/material.module";
 import { MyHistoryComponent } from "./my-history.component";
-import { MatTableModule } from "@angular/material/table";
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatButtonModule } from "@angular/material/button";
+import { DatePipe } from "@angular/common";
+import { MatTableModule } from "@angular/material/table";
 import { MatInputModule } from "@angular/material/input";
-import { MatIconModule } from "@angular/material/icon";
-import { MatGridListModule } from "@angular/material/grid-list";
-import { MaterialExampleModule } from "material.module";
-
 const routes: Routes = [
   {
     path: "",
@@ -28,15 +27,15 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     HttpClientModule,
-    MatTableModule,
+    // MaterialModule,
+    MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatFormFieldModule,
+    MatButtonModule,
+    MatTableModule,
     MatInputModule,
-    MatIconModule,
-    MatGridListModule,
-    MaterialExampleModule,
   ],
   declarations: [MyHistoryComponent],
+  providers: [DatePipe],
 })
 export class MyHistoryModule {}

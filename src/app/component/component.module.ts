@@ -19,6 +19,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 
 import { MatInputModule } from "@angular/material/input";
 import { MatDialogModule } from "@angular/material/dialog";
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     ButtonsComponent,
     CardsComponent,
     TableComponent,
+    FeedbackComponent,
   ],
 })
 export class ComponentsModule {}

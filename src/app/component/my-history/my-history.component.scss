@@ -3,6 +3,15 @@ table {
   margin-top: 30px;
 }
 .example-form-field {
-  margin: 0 8px 16px 0;
-  display: flex;
+  padding: 25px;
+  margin-top: 10px;
+}
+
+.mat-datepicker-toggle {
+  position: absolute;
+  top: -12px;
+  right: 0;
+}
+.filter {
+  width: 100%;
 }

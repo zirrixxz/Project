@@ -1,10 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { DepressionTestService } from "../DepressionTest/depressiontest.service";
-import { DepressionTestRes } from "../DepressionTest/depressiontest.type";
+
 import * as moment from "moment";
 import { DateAdapter } from "@angular/material/core";
 import { FormControl, FormGroup } from "@angular/forms";
+import { MyHistoryService } from "./my-history.service";
+import { DepressionTestHistory, DepressionTestRes } from "./my-history.type";
+import { DatePipe } from "@angular/common";
 
 const today = new Date();
 const month = today.getMonth();
@@ -18,11 +20,19 @@ const year = today.getFullYear();
 export class MyHistoryComponent implements OnInit {
   roleName: string = localStorage.getItem("roleName") ?? "";
   constructor(
-    private httpservice: DepressionTestService // private dateadapter: DateAdapter<Date>
+    private httpservice: MyHistoryService,
+    public datepipe: DatePipe // private dateadapter: DateAdapter<Date>
   ) {
     // this.dateadapter.setLocale("en-GB");
   }
-  datalist: DepressionTestRes[] = [];
+  displayColumnsForTeacher: string[] = [
+    "UserId",
+    "ScoreResult",
+    "LevelResult",
+    "Comment",
+    "LastUpdated",
+    "Test Date",
+  ];
   displayedColumns: string[] = [
     "Score",
     "Level",
@@ -30,8 +40,9 @@ export class MyHistoryComponent implements OnInit {
     "Last Updated",
     "Test Date",
   ];
-  dataSource = new MatTableDataSource<DepressionTestRes>();
 
+  dataSource = new MatTableDataSource<DepressionTestRes>();
+  dataSourceForTecher = new MatTableDataSource<DepressionTestHistory>();
   campaignOne = new FormGroup({
     start: new FormControl(new Date(year, month, 13)),
     end: new FormControl(new Date(year, month, 16)),
@@ -40,11 +51,41 @@ export class MyHistoryComponent implements OnInit {
     start: new FormControl(new Date(year, month, 15)),
     end: new FormControl(new Date(year, month, 19)),
   });
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
   moment = moment;
 
   ngOnInit(): void {
     this.getServiceHistory();
     console.log(this.campaignOne);
+  }
+  callDataForTeacher() {
+    let startDate = this.datepipe.transform(
+      this.range.value.start,
+      "yyyy-MM-dd h:mm:ss"
+    );
+    console.log(startDate);
+    let endDate = this.datepipe.transform(
+      this.range.value.end,
+      "yyyy-MM-dd h:mm:ss"
+    );
+    console.log(endDate);
+    this.httpservice
+      .GetDepressionTestByTeacher(endDate ?? "", startDate ?? "")
+      .subscribe(
+        (response) => {
+          console.log(response);
+
+          this.dataSourceForTecher = new MatTableDataSource(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    console.log(this.range.value.start);
+    console.log(this.range.value.start);
   }
 
   getServiceHistory() {
@@ -53,8 +94,6 @@ export class MyHistoryComponent implements OnInit {
       this.httpservice.GetDepressionTestByStudent(id).subscribe(
         (response) => {
           this.dataSource = new MatTableDataSource(response);
-          this.datalist = response;
-          console.log(this.datalist);
         },
         (error) => {
           console.log(error);
@@ -77,5 +116,10 @@ export class MyHistoryComponent implements OnInit {
     const dateReturn: Date = new Date(date);
     dateReturn.setHours(dateReturn.getHours() + 7);
     return dateReturn;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceForTecher.filter = filterValue.trim().toLowerCase();
   }
 }

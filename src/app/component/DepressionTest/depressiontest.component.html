@@ -1,73 +1,10 @@
-
 <h2 style="margin-top: 20px;margin-bottom:20px;">Depression Assessment Form PATIENT HEALTH QUESTIONNAIRE-9 (PHQ-9) </h2>
 
 <mat-stepper linear #stepper>
-  <mat-step label="Fill out your Info" >
-
-    <!-- <ng-template matStepLabel></ng-template> -->
-
-    <div class="row" >
 
 
 
 
-
-
-      <div class="col-12">
-
-        <div class="card w-100">
-          <div class="border-bottom p-3">
-            <h4 class="card-title mb-0">Personal Info</h4>
-            <small class="text-mute">Fill in your required information</small>
-
-          </div>
-          <label class="radio" id="example-radio-group-label">What is your is gender?</label>
-          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-            [(ngModel)]="favgender">
-            <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
-              {{gender}}
-            </mat-radio-button>
-          </mat-radio-group>
-
-          <mat-divider></mat-divider>
-
-
-
-          <label class="radio" id="example-radio-group-label">Which year are you in?</label>
-          <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-            [(ngModel)]="favyear">
-            <mat-radio-button class="example-radio-button" *ngFor="let year of years" [value]="year">
-              {{year}}
-            </mat-radio-button>
-          </mat-radio-group>
-
-          <mat-divider></mat-divider>
-
-
-
-          <label class="radio" id="example-radio-group-label ">What Faculty of study are you in?</label>
-          <mat-radio-group class="example-radio-group "
-            [(ngModel)]="favstudy">
-            <mat-radio-button class="example-radio-button"  *ngFor="let study of studys" [value]="study">
-              <span class="wrap-mat-radio-label">
-              {{study}}
-            </span>
-            </mat-radio-button>
-          </mat-radio-group>
-
-
-        </div>
-
-
-      </div>
-    </div>
-
-    <div>
-
-
-      <button class="btn btn-next" mat-button matStepperNext>Next</button>
-    </div>
-  </mat-step>
   <mat-step label="Take a test">
 
     <!-- <ng-template matStepLabel>Take a Test</ng-template> -->
@@ -246,6 +183,7 @@
     <div>
       <button class="btn btn-pre" mat-button matStepperPrevious>Back</button>
       <button class="btn btn-next" mat-button matStepperNext>Next</button>
+      <!-- <button class="btn" mat-button (click)='submit()'>Next</button> -->
     </div>
   </mat-step>
 
@@ -269,7 +207,7 @@
           <form class="example-form">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Suggestions for our websites</mat-label>
-              <input matInput placeholder=" ">
+              <input matInput placeholder=" " (ngModel)="feedback">
             </mat-form-field>
           </form>
 
@@ -284,7 +222,7 @@
     <div>
       <button class="btn" mat-button (click)="stepper.reset()">Reset</button>
       <button class="btn btn-pre" mat-button matStepperPrevious>Back</button>
-      <button class="btn" mat-button (click)="openDialog()">Done</button>
+      <button class="btn" mat-button (click)="submit()">Done</button>
     </div>
   </mat-step>
 

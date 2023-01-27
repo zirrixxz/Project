@@ -1,10 +1,18 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
-import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { DialogRef } from "@angular/cdk/dialog";
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from "@angular/material/dialog";
 
-export interface DialogData {}
+import { DepressionTestService } from "./depressiontest.service";
+import { DepressionTestReq } from "./depressiontest.type";
+import { NavigationExtras, Router } from "@angular/router";
+import { resourceLimits } from "worker_threads";
+import { FeedbackService } from "../feedback/feedback.service";
+import { AddFeedbackMessageRequest } from "../feedback/feedback.type";
 
 @Component({
   templateUrl: "depressiontest.component.html",
@@ -16,36 +24,9 @@ export interface DialogData {}
     },
   ],
 })
-export class DepressionTestComponent {
-  favgender: string = "";
-  genders: string[] = ["Male", "Female", "Not specified"];
-  favyear: string = "";
-  years: string[] = ["year 1", "year 2", "year 3", "year 4", "year 5"];
-  favstudy: string = "";
-  studys: string[] = [
-    "Faculty of Agriculture and Natural Resources",
-    "Faculty of Information and Communication Technology",
-    "Faculty of Dentistry",
-    "Faculty of Law",
-    "Faculty of Nursing",
-    "Faculty of Energy and Environment",
-    "Faculty of Medicine",
-    "Faculty of Pharmacy",
-    "Faculty of Political and Social Sciences",
-    "Faculty of Business Administration and Communication Arts",
-    "Faculty of Science",
-    "Faculty of Science",
-    "Medicine",
-    "Faculty of Engineering",
-    "Faculty of Liberal Arts",
-    "Faculty of Architecture and Fine Arts",
-    "Faculty of Allied Health Sciences",
-    "College of Education",
-  ];
-
+export class DepressionTestComponent implements OnInit {
   favfirst: string = "";
   firsts: string[] = ["0", "1", "2", "3"];
-
   favsecond: string = "";
   seconds: string[] = ["0", "1", "2", "3"];
   favthird: string = "";
@@ -70,20 +51,145 @@ export class DepressionTestComponent {
     "Extremely difficult",
   ];
 
+  score: number = 0;
+  feedback: string = "";
+  constructor(
+    public dialog: MatDialog,
+    private service: DepressionTestService,
+    private feedbackService: FeedbackService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {}
+
+  getResult() {
+    this.score = 0;
+
+    this.score += Number(this.favfirst);
+
+    this.score += Number(this.favsecond);
+
+    this.score += Number(this.favthird);
+
+    this.score += Number(this.favfour);
+
+    this.score += Number(this.favfive);
+
+    this.score += Number(this.favsix);
+
+    this.score += Number(this.favseven);
+
+    this.score += Number(this.faveight);
+
+    this.score += Number(this.favnine);
+
+    if (this.favten == "Not difficult") {
+      this.score += 0;
+    }
+    if (this.favten == "Somewhat difficult") {
+      this.score += 1;
+    }
+    if (this.favten == "Very difficult") {
+      this.score += 2;
+    }
+    if (this.favten == "Extremely difficult") {
+      this.score += 3;
+    }
+    console.log(this.score);
+  }
+
   emailFormControl = new FormControl("", [
     Validators.required,
     Validators.email,
   ]);
 
-  constructor(public dialog: MatDialog) {}
-
   openDialog() {
-    this.dialog.open(dialogOverview, {
-      data: {
-        
-      },
-    });
-   
+    console.log("this.score ==> before", this.score);
+
+    this.dialog
+      .open(dialogOverview, {
+        data: { score: this.score },
+      })
+      .afterClosed()
+      .subscribe((item) => {
+        if (item) {
+          this.getResult();
+        }
+        console.log("this.score ==> save", this.score);
+        console.log(item);
+        let confirmed: DepressionTestReq = {
+          userId: localStorage.getItem("userId") ?? "",
+          scoreResult: this.score,
+          TestDate: new Date(),
+        };
+
+        this.service.postAddDepressionTest(confirmed).subscribe((response) => {
+          console.log(response);
+          //console.log(response.isSuccess);
+          console.log("old page", this.score);
+          let navigationExtras: NavigationExtras = {
+            queryParams: {
+              scoreResult: response.score,
+              level: response.level,
+            },
+          };
+                //เก็บfeedback กรณีที่มีการกรอกข้อมูล
+
+      // if(this.feedback !== ""){
+       
+      //   //map data
+      //   let feedbackReq: AddFeedbackMessageRequest = {
+      //     userId: localStorage.getItem("userId") ?? "",
+      //     message: this.feedback,
+    
+      //   };
+      // this.feedbackService.postAddFeedback(feedbackReq).subscribe((response) => {
+      //       console.log(response.message);
+      // });
+      // }
+
+       this.router.navigate(["/scoreResult"], navigationExtras);
+        });
+
+
+      });
+  }
+
+  submit() {
+    console.log("r454545");
+    var result = true;
+
+    if (this.favfirst == "") {
+      result = false;
+    } else if (this.favsecond == "") {
+      result = false;
+    } else if (this.favthird == "") {
+      result = false;
+    } else if (this.favfour == "") {
+      result = false;
+    } else if (this.favfive == "") {
+      result = false;
+    } else if (this.favsix == "") {
+      result = false;
+    } else if (this.favseven == "") {
+      result = false;
+    } else if (this.faveight == "") {
+      result = false;
+    } else if (this.favnine == "") {
+      result = false;
+    } else if (this.favten == "") {
+      result = false;
+    }
+
+    console.log(result);
+    if (result === false) {
+      this.dialog.open(dialogChecknull, {}).afterClosed();
+      
+ 
+
+    } else {
+      this.openDialog();
+    }
   }
 }
 
@@ -92,7 +198,35 @@ export class DepressionTestComponent {
   templateUrl: "dialog-overview.html",
 })
 export class dialogOverview {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<dialogOverview>
+  ) {
+    console.log("this.score ==> after", this.data.score);
+  }
+  confirm() {
+    this.dialogRef.close(true);
+  }
+  cancel() {
+    this.dialogRef.close(false);
+  }
 }
-export class depressiontest {}
 
+@Component({
+  selector: "dialog-checknull",
+  templateUrl: "dialog-checknull.html",
+})
+export class dialogChecknull {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<dialogChecknull>
+  ) {}
+  confirm() {
+    this.dialogRef.close(true);
+  }
+  cancel() {
+    this.dialogRef.close(false);
+  }
+}
+
+export class depressiontest {}

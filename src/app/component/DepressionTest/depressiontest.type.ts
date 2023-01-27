@@ -1,25 +1,16 @@
 export interface DepressionTestRes {
   message: string;
   isSuccess: boolean;
+  level :string;
+  score:number;
 }
 
 export interface DepressionTestReq {
   userId: string;
   scoreResult: number;
+  TestDate: Date;
 }
-export interface DepressionTestRes {
+
+export interface DeleteDepressionTestReq {
   id: string;
-  userId: string;
-  scoreResult: number;
-  levelResult: string;
-  comment: string;
-  lastUpdated: Date;
-  testDate: Date;
 }
-export interface DeleteDepressionTestReq{
-  
-id:string 
-
-}
-
-

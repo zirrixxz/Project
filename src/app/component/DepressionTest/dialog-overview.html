@@ -6,6 +6,6 @@
 </div>
 
 <div mat-dialog-actions>
-  <button class="btn btn-outline-primary" mat-button>save</button>
-  <button class="btn btn-outline-success" style="margin:10px;" mat-button>Cancel</button>
+  <button class="btn btn-outline-primary" mat-button (click)="confirm()" click="routeWithData()">save</button>
+  <button class="btn btn-outline-success" style="margin:10px;" (click)="cancel()" mat-button>Cancel</button>
 </div>
