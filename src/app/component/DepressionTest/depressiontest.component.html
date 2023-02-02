@@ -23,6 +23,7 @@
           <div class="border-bottom p-3">
 
             <h4 class="card-title mb-0">Counseling</h4>
+
             <small class="text-muted fs-3">PATIENT HEALTH QUESTIONNAIRE-9 (PHQ-9)
               Over the last 2 weeks, how often have you been bothered
               by any of the following problems?
@@ -204,10 +205,10 @@
               further research</small>
           </div>
 
-          <form class="example-form">
+          <form class="example-form" [formGroup]="Feedback">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Suggestions for our websites</mat-label>
-              <input matInput placeholder=" " (ngModel)="feedback">
+              <input matInput placeholder=" " formControlName="feedback">
             </mat-form-field>
           </form>
 

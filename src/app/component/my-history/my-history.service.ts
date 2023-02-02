@@ -1,6 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { DepressionTestHistory, DepressionTestRes } from "./my-history.type";
+import {
+  DepressionTestHistory,
+  DepressionTestRes,
+  EditCommentRequest,
+  Result,
+} from "./my-history.type";
 
 @Injectable({
   providedIn: "root",
@@ -23,6 +28,12 @@ export class MyHistoryService {
       this.rootURL +
         "api/DepressionTest/GetDepressionTestbyStudent?userId=" +
         userId
+    );
+  }
+  PostEditComment(editComment: EditCommentRequest) {
+    return this.http.post<Result>(
+      this.rootURL + "api/DepressionTest/EditComment",
+      editComment
     );
   }
 }

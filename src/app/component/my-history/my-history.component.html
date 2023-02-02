@@ -17,8 +17,10 @@
 
   <!-- Weight Column -->
   <ng-container matColumnDef="Comment">
-    <th mat-header-cell *matHeaderCellDef> Comment form the doctor </th>
-    <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+    <th mat-header-cell *matHeaderCellDef> Comment </th>
+    <td mat-cell *matCellDef="let element">{{element.Comment}}
+
+    </td>
   </ng-container>
 
   <!-- Symbol Column -->
@@ -34,6 +36,8 @@
     <td mat-cell *matCellDef="let element">
       {{this.moment(convertToUTC(element.testDate? element.testDate:"-")).format("DD/MM/yyyy HH:mm")}} </td>
   </ng-container>
+
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -81,8 +85,9 @@
 
     <!-- Weight Column -->
     <ng-container matColumnDef="Comment">
-      <th mat-header-cell *matHeaderCellDef> Comment form the doctor </th>
-      <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+      <th mat-header-cell *matHeaderCellDef> follow up </th>
+      <td mat-cell *matCellDef="let element"> <button mat-raised-button (click)="openDialog()">Comment</button> </td>
+
     </ng-container>
 
 

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { FormControl, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 import {
   MatDialog,
@@ -10,9 +10,9 @@ import {
 import { DepressionTestService } from "./depressiontest.service";
 import { DepressionTestReq } from "./depressiontest.type";
 import { NavigationExtras, Router } from "@angular/router";
-import { resourceLimits } from "worker_threads";
+
 import { FeedbackService } from "../feedback/feedback.service";
-import { AddFeedbackMessageRequest } from "../feedback/feedback.type";
+
 
 @Component({
   templateUrl: "depressiontest.component.html",
@@ -51,6 +51,7 @@ export class DepressionTestComponent implements OnInit {
     "Extremely difficult",
   ];
 
+ 
   score: number = 0;
   feedback: string = "";
   constructor(
@@ -61,6 +62,8 @@ export class DepressionTestComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+
 
   getResult() {
     this.score = 0;
@@ -103,12 +106,18 @@ export class DepressionTestComponent implements OnInit {
     Validators.email,
   ]);
 
+  Feedback = new FormGroup({
+    feedback: new FormControl(""),
+  });
   openDialog() {
     console.log("this.score ==> before", this.score);
 
     this.dialog
       .open(dialogOverview, {
-        data: { score: this.score },
+        data: {
+          score: this.score,
+          feedback: this.Feedback.value.feedback ?? "",
+        },
       })
       .afterClosed()
       .subscribe((item) => {
@@ -116,11 +125,13 @@ export class DepressionTestComponent implements OnInit {
           this.getResult();
         }
         console.log("this.score ==> save", this.score);
+
         console.log(item);
         let confirmed: DepressionTestReq = {
           userId: localStorage.getItem("userId") ?? "",
           scoreResult: this.score,
           TestDate: new Date(),
+          feedback: this.Feedback.value.feedback ?? "",
         };
 
         this.service.postAddDepressionTest(confirmed).subscribe((response) => {
@@ -133,30 +144,13 @@ export class DepressionTestComponent implements OnInit {
               level: response.level,
             },
           };
-                //เก็บfeedback กรณีที่มีการกรอกข้อมูล
 
-      // if(this.feedback !== ""){
-       
-      //   //map data
-      //   let feedbackReq: AddFeedbackMessageRequest = {
-      //     userId: localStorage.getItem("userId") ?? "",
-      //     message: this.feedback,
-    
-      //   };
-      // this.feedbackService.postAddFeedback(feedbackReq).subscribe((response) => {
-      //       console.log(response.message);
-      // });
-      // }
-
-       this.router.navigate(["/scoreResult"], navigationExtras);
+          this.router.navigate(["/scoreResult"], navigationExtras);
         });
-
-
       });
   }
 
   submit() {
-    console.log("r454545");
     var result = true;
 
     if (this.favfirst == "") {
@@ -184,11 +178,9 @@ export class DepressionTestComponent implements OnInit {
     console.log(result);
     if (result === false) {
       this.dialog.open(dialogChecknull, {}).afterClosed();
-      
- 
-
     } else {
       this.openDialog();
+      
     }
   }
 }

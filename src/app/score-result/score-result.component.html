@@ -1,14 +1,19 @@
 <mat-card style="top:20px">
   <mat-card-header>
-    <mat-card-title>Total score</mat-card-title>
+    <mat-card-title style=" font-size: 200%;font-weight: bold;">Total score
+    </mat-card-title>
 
   </mat-card-header>
   <mat-card-content>
-    <img mat-card-sm-image src="" alt="emoji">
-    <br>
-
-    <P>This is your score: {{score}}</P>  
-    <p>Advice for you: {{level}}</p>
+    <div class="container">
+      <i [class]="emo" class="item1" style="font-size: 100px;"></i>
+      <br>
+      <br>
+      <div class="item2">
+        <P>This is your score: {{score}}</P>
+        <p>Advice for you: {{level}}</p>
+      </div>
+    </div>
     <mat-divider></mat-divider>
     <br>
     <p>You can contact University Hospital of Phayao. Faculty of Medicine You can follow the details of the phone

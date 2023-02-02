@@ -1,16 +1,24 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-
 import * as moment from "moment";
-import { DateAdapter } from "@angular/material/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MyHistoryService } from "./my-history.service";
 import { DepressionTestHistory, DepressionTestRes } from "./my-history.type";
 import { DatePipe } from "@angular/common";
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from "@angular/material/dialog";
 
 const today = new Date();
 const month = today.getMonth();
 const year = today.getFullYear();
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: "app-my-history",
@@ -21,7 +29,8 @@ export class MyHistoryComponent implements OnInit {
   roleName: string = localStorage.getItem("roleName") ?? "";
   constructor(
     private httpservice: MyHistoryService,
-    public datepipe: DatePipe // private dateadapter: DateAdapter<Date>
+    public datepipe: DatePipe, // private dateadapter: DateAdapter<Date>
+    public dialog: MatDialog
   ) {
     // this.dateadapter.setLocale("en-GB");
   }
@@ -122,4 +131,42 @@ export class MyHistoryComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceForTecher.filter = filterValue.trim().toLowerCase();
   }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComment, {
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  }
 }
+
+@Component({
+  selector: "dialog-comment",
+  templateUrl: "dialog-comment.html",
+})
+export class DialogComment {
+  constructor(
+    public dialogRef: MatDialogRef<DialogComment>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+// @Component({
+//   selector: 'dialog-comment',
+//   templateUrl: 'dialog-comment.html',
+// })
+// export class DialogComment{
+//   constructor(
+//     public dialogRef: MatDialogRef<DialogComment>,
+//     @Inject(MAT_DIALOG_DATA) public data: DialogData,
+//   ){}
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+// }

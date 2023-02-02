@@ -16,3 +16,11 @@ export interface DepressionTestRes {
   lastUpdated: Date;
   testDate: Date;
 }
+export interface EditCommentRequest {
+  id: string;
+  comment: string;
+}
+export interface Result {
+  message: string;
+  isSuccess: string;
+}
