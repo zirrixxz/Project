@@ -3,7 +3,11 @@ import { MatTableDataSource } from "@angular/material/table";
 import * as moment from "moment";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MyHistoryService } from "./my-history.service";
-import { DepressionTestHistory, DepressionTestRes } from "./my-history.type";
+import {
+  DepressionTestHistory,
+  DepressionTestRes,
+  EditCommentRequest,
+} from "./my-history.type";
 import { DatePipe } from "@angular/common";
 import {
   MatDialog,
@@ -15,11 +19,6 @@ const today = new Date();
 const month = today.getMonth();
 const year = today.getFullYear();
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
 @Component({
   selector: "app-my-history",
   templateUrl: "./my-history.component.html",
@@ -27,10 +26,13 @@ export interface DialogData {
 })
 export class MyHistoryComponent implements OnInit {
   roleName: string = localStorage.getItem("roleName") ?? "";
+  id: string = "";
+
   constructor(
     private httpservice: MyHistoryService,
     public datepipe: DatePipe, // private dateadapter: DateAdapter<Date>
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private service: MyHistoryService
   ) {
     // this.dateadapter.setLocale("en-GB");
   }
@@ -109,8 +111,7 @@ export class MyHistoryComponent implements OnInit {
         }
       );
     } else {
-      // this.httpservice
-      //   .GetDepressionTestByTeacher(startTestDate, endTestDate)
+      // this.httpservice.GetDepressionTestByTeacher(startTestDate, endTestDate)
       //   .subscribe(
       //     (response) => {
       //       console.log(response);
@@ -131,13 +132,25 @@ export class MyHistoryComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceForTecher.filter = filterValue.trim().toLowerCase();
   }
-  openDialog(): void {
+  openDialog(studentId: string): void {
+    console.log(studentId);
+
     const dialogRef = this.dialog.open(DialogComment, {
-      data: {},
+      data: { studentId: studentId },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
+      console.log(result);
+      if (result) {
+        let comfirmed: EditCommentRequest = {
+          id: studentId,
+          comment: result ?? "",
+        };
+        this.service.PostEditComment(comfirmed).subscribe((response) => {
+          if (response) {
+          }
+        });
+      }
     });
   }
 }
@@ -147,13 +160,20 @@ export class MyHistoryComponent implements OnInit {
   templateUrl: "dialog-comment.html",
 })
 export class DialogComment {
+  studentId: string = this.data.id;
+  comment: string = "";
   constructor(
     public dialogRef: MatDialogRef<DialogComment>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    console.log(data);
+  }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onNoClick() {
+    this.dialogRef.close(false);
+  }
+  confirm() {
+    this.dialogRef.close(this.comment);
   }
 }
 

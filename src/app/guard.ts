@@ -20,9 +20,23 @@ export class CanActivateTeam implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+      
     var userId = localStorage.getItem("userId");
     if (userId != "" && userId != null && userId != undefined) {
-      return true;
+      if (localStorage.getItem("roleName") == "Teacher") {
+        if (
+          state.url == "/dashboard" ||
+          state.url == "/myhistory" ||
+          state.url == "/profile-info"
+        ) {
+          return true;
+        } else {
+          this.router.navigate(["dashboard"]);
+          return false;
+        }
+      } else {
+        return true;
+      }
     } else {
       this.router.navigate(["/login-page"]);
       return false;

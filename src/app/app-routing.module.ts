@@ -3,12 +3,20 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { FullComponent } from "./layouts/full/full.component";
 import { CanActivateTeam } from "./guard";
+import { GuardRole } from "./guardrole";
 export const Approutes: Routes = [
   {
     path: "",
     component: FullComponent,
     children: [
-      { path: "", redirectTo: "/login-page", pathMatch: "full" },
+      {
+        path: "",
+        redirectTo:
+          localStorage.getItem("roleName") == "Teacher"
+            ? "dashboard"
+            : "depressiontest",
+        pathMatch: "full",
+      },
       {
         path: "dashboard",
         canActivate: [CanActivateTeam],
@@ -31,6 +39,7 @@ export const Approutes: Routes = [
       },
       {
         path: "login-page",
+
         loadChildren: () =>
           import("./login-page/login-page.module").then(
             (m) => m.LoginPageModule
@@ -72,6 +81,6 @@ export const Approutes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "/starter",
+    redirectTo: "/dashboard",
   },
 ];

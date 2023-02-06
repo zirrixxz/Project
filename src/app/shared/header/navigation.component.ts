@@ -17,7 +17,7 @@ export class NavigationComponent implements AfterViewInit {
   public showSearch = false;
 
   constructor(private modalService: NgbModal, private router: Router) {}
-
+  guardrole: boolean = localStorage.getItem('roleName') == 'Teacher';
   // This is for Notifications
   notifications: Object[] = [
     {
