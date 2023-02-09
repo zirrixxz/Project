@@ -48,9 +48,7 @@ export class ProfileInfoComponent implements OnInit {
 
   onGetInfo() {
     this.userId = localStorage.getItem("userId") ?? "";
-    // console.log("userId", this.userId);
     this.service.getCurrentUser(this.userId).subscribe((response) => {
-      // console.log("response", response);
       if (response != null) {
         this.username = response.userName;
         this.fName = response.firstName;
@@ -72,27 +70,14 @@ export class ProfileInfoComponent implements OnInit {
       NewPassword: this.newPass,
       UserName: localStorage.getItem("userName")!,
     };
-    console.log("new", this.newPass);
-    console.log("confirm", this.changePass);
 
     if (this.changePass != this.newPass) {
-      // return true;
       console.log("no");
     } else {
       console.log("yes");
     }
 
-    // this.service.postChangePasswordApi(changePass).subscribe((response) => {
-    //   console.log(response);
 
-    //   if (response.IsSuccess) {
-    //     //change success
-    //     alert("Change success");
-    //   } else {
-    //     //can't change
-    //     alert("Cannot chanage password!");
-    //   }
-    // });
   }
   openDialog() {
     this.dialog.open(dialogButtonProfileInfo, {

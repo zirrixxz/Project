@@ -98,7 +98,6 @@ export class DepressionTestComponent implements OnInit {
     if (this.favten == "Extremely difficult") {
       this.score += 3;
     }
-    console.log(this.score);
   }
 
   emailFormControl = new FormControl("", [
@@ -110,7 +109,6 @@ export class DepressionTestComponent implements OnInit {
     feedback: new FormControl(""),
   });
   openDialog() {
-    console.log("this.score ==> before", this.score);
 
     this.dialog
       .open(dialogOverview, {
@@ -124,9 +122,7 @@ export class DepressionTestComponent implements OnInit {
         if (item) {
           this.getResult();
         }
-        console.log("this.score ==> save", this.score);
 
-        console.log(item);
         let confirmed: DepressionTestReq = {
           userId: localStorage.getItem("userId") ?? "",
           scoreResult: this.score,
@@ -135,9 +131,6 @@ export class DepressionTestComponent implements OnInit {
         };
 
         this.service.postAddDepressionTest(confirmed).subscribe((response) => {
-          console.log(response);
-          //console.log(response.isSuccess);
-          console.log("old page", this.score);
           let navigationExtras: NavigationExtras = {
             queryParams: {
               scoreResult: response.score,
@@ -175,7 +168,7 @@ export class DepressionTestComponent implements OnInit {
       result = false;
     }
 
-    console.log(result);
+    
     if (result === false) {
       this.dialog.open(dialogChecknull, {}).afterClosed();
     } else {
@@ -194,7 +187,7 @@ export class dialogOverview {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<dialogOverview>
   ) {
-    console.log("this.score ==> after", this.data.score);
+    
   }
   confirm() {
     this.dialogRef.close(true);

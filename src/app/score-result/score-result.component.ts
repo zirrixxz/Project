@@ -27,7 +27,6 @@ export class ScoreResultComponent implements OnInit {
       this.score = Number(params["scoreResult"]);
       this.level = params["level"];
     });
-    console.log(this.score);
     this.emoji();
   }
   emoji() {

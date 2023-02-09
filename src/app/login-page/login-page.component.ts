@@ -29,11 +29,8 @@ export class LoginPageComponent implements OnInit {
       UserName: this.loginFormControl.value.username ?? "",
       Password: this.loginFormControl.value.password ?? "",
     };
-    console.log(login);
     if (this.loginFormControl.valid) {
       this.service.postLoginApi(login).subscribe((response) => {
-        console.log(response);
-        console.log(response.isSuccess);
         if (response.isSuccess) {
           localStorage.setItem("userId", response.userId);
           localStorage.setItem("firstName", response.firstName);

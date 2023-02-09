@@ -68,33 +68,28 @@ export class MyHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getServiceHistory();
-    console.log(this.campaignOne);
   }
   callDataForTeacher() {
     let startDate = this.datepipe.transform(
       this.range.value.start,
       "yyyy-MM-dd h:mm:ss"
     );
-    console.log(startDate);
+
     let endDate = this.datepipe.transform(
       this.range.value.end,
       "yyyy-MM-dd h:mm:ss"
     );
-    console.log(endDate);
+
     this.httpservice
       .GetDepressionTestByTeacher(endDate ?? "", startDate ?? "")
       .subscribe(
         (response) => {
-          console.log(response);
-
           this.dataSourceForTecher = new MatTableDataSource(response);
         },
         (error) => {
           console.log(error);
         }
       );
-    console.log(this.range.value.start);
-    console.log(this.range.value.start);
   }
 
   getServiceHistory() {
@@ -131,15 +126,17 @@ export class MyHistoryComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceForTecher.filter = filterValue.trim().toLowerCase();
   }
-  openDialog(studentId: string): void {
-    console.log(studentId);
 
+  applyFilerStudent(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  openDialog(studentId: string): void {
     const dialogRef = this.dialog.open(DialogComment, {
       data: { studentId: studentId },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
       if (result) {
         let comfirmed: EditCommentRequest = {
           id: studentId,
@@ -164,9 +161,7 @@ export class DialogComment {
   constructor(
     public dialogRef: MatDialogRef<DialogComment>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    console.log(data);
-  }
+  ) {}
 
   onNoClick() {
     this.dialogRef.close(false);
@@ -175,17 +170,3 @@ export class DialogComment {
     this.dialogRef.close(this.comment);
   }
 }
-
-// @Component({
-//   selector: 'dialog-comment',
-//   templateUrl: 'dialog-comment.html',
-// })
-// export class DialogComment{
-//   constructor(
-//     public dialogRef: MatDialogRef<DialogComment>,
-//     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-//   ){}
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-// }

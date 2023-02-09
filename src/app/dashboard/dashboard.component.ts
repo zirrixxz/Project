@@ -159,7 +159,6 @@ export class DashboardComponent implements AfterViewInit, OnInit {
           }
         );
     } else {
-      console.log("Teacher");
 
       this.httpservice
         .GetDepressionTestByTeacher(endDate ?? "", startDate ?? "")
@@ -189,19 +188,15 @@ export class DashboardComponent implements AfterViewInit, OnInit {
               switch (values.levelResult) {
                 case "รุนแรง":
                   this.dangerCount++;
-                  console.log("รุนแรง");
                   break;
                 case "ปานกลาง":
                   this.normalCount++;
-                  console.log("ปานกลาง");
                   break;
                 case "เล็กน้อย":
                   this.wellCount++;
-                  console.log("เล็กน้อย");
                   break;
                 case "ไม่มีอาการ":
                   this.chillCount++;
-                  console.log("ไม่มีอาการ");
                   break;
               }
               this.statusLevel();
@@ -282,19 +277,15 @@ export class DashboardComponent implements AfterViewInit, OnInit {
               switch (values.levelResult) {
                 case "รุนแรง":
                   this.dangerCount++;
-                  console.log("รุนแรง");
                   break;
                 case "ปานกลาง":
                   this.normalCount++;
-                  console.log("ปานกลาง");
                   break;
                 case "เล็กน้อย":
                   this.wellCount++;
-                  console.log("เล็กน้อย");
                   break;
                 case "ไม่มีอาการ":
                   this.chillCount++;
-                  console.log("ไม่มีอาการ");
                   break;
               }
               this.statusLevel();
@@ -375,19 +366,15 @@ export class DashboardComponent implements AfterViewInit, OnInit {
               switch (values.levelResult) {
                 case "รุนแรง":
                   this.dangerCount++;
-                  console.log("รุนแรง");
                   break;
                 case "ปานกลาง":
                   this.normalCount++;
-                  console.log("ปานกลาง");
                   break;
                 case "เล็กน้อย":
                   this.wellCount++;
-                  console.log("เล็กน้อย");
                   break;
                 case "ไม่มีอาการ":
                   this.chillCount++;
-                  console.log("ไม่มีอาการ");
                   break;
               }
 
