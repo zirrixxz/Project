@@ -31,13 +31,11 @@ export class MyHistoryComponent implements OnInit {
   constructor(
     private httpservice: MyHistoryService,
     public datepipe: DatePipe, // private dateadapter: DateAdapter<Date>
-    public dialog: MatDialog,
-    private service: MyHistoryService
-  ) {
-    // this.dateadapter.setLocale("en-GB");
-  }
+    public dialog: MatDialog
+  ) {}
   displayColumnsForTeacher: string[] = [
-    "UserId",
+    "FirstName",
+    "LastName",
     "ScoreResult",
     "LevelResult",
     "Comment",
@@ -101,25 +99,26 @@ export class MyHistoryComponent implements OnInit {
 
   getServiceHistory() {
     let id: string = localStorage.getItem("userId") ?? "";
+    let startDate = this.datepipe.transform(
+      this.range.value.start,
+      "yyyy-MM-dd h:mm:ss"
+    );
+    let endDate = this.datepipe.transform(
+      this.range.value.end,
+      "yyyy-MM-dd h:mm:ss"
+    );
     if (localStorage.getItem("roleName") == "Student") {
-      this.httpservice.GetDepressionTestByStudent(id).subscribe(
-        (response) => {
-          this.dataSource = new MatTableDataSource(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      this.httpservice
+        .GetDepressionTestByStudent(id, endDate ?? "", startDate ?? "")
+        .subscribe(
+          (response) => {
+            this.dataSource = new MatTableDataSource(response);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     } else {
-      // this.httpservice.GetDepressionTestByTeacher(startTestDate, endTestDate)
-      //   .subscribe(
-      //     (response) => {
-      //       console.log(response);
-      //     },
-      //     (error) => {
-      //       console.log(error);
-      //     }
-      //   );
     }
   }
   convertToUTC(date: Date): Date {
@@ -146,7 +145,7 @@ export class MyHistoryComponent implements OnInit {
           id: studentId,
           comment: result ?? "",
         };
-        this.service.PostEditComment(comfirmed).subscribe((response) => {
+        this.httpservice.PostEditComment(comfirmed).subscribe((response) => {
           if (response) {
           }
         });

@@ -44,3 +44,4 @@ export interface ChangePasswordRes {
   oldPassword: string;
   newPassword: string;
 }
+

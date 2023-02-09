@@ -3,14 +3,13 @@ import { Injectable } from "@angular/core";
 import {
   DepressionTestHistory,
   DepressionTestRes,
-  EditCommentRequest,
   Result,
-} from "./my-history.type";
+} from "./dashboard.type";
 
 @Injectable({
   providedIn: "root",
 })
-export class MyHistoryService {
+export class DashboardService {
   private rootURL = "https://localhost:7141/";
   constructor(private http: HttpClient) {}
 
@@ -36,12 +35,6 @@ export class MyHistoryService {
         startTestDate +
         "&endTestDate=" +
         endTestDate
-    );
-  }
-  PostEditComment(editComment: EditCommentRequest) {
-    return this.http.post<Result>(
-      this.rootURL + "api/DepressionTest/EditComment",
-      editComment
     );
   }
 }
