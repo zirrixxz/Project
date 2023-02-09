@@ -1,20 +1,14 @@
 import { Component, Inject, OnInit } from "@angular/core";
+import { FormBuilder } from "@angular/forms";
 import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
-import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { get } from "http";
 
-import { ConfirmedValidator } from "./confirmed.validator";
 import { ProfileInfoService } from "./profile-info.service";
 import { ChangePasswordRequest } from "./profile-info.type";
-// import { Router } from '@angular/router';
-// import { LoginPageService } from 'app/login-page/login-page.service';
-// import { EditUserReq } from 'app/login-page/login-page.type';
 
 @Component({
   selector: "app-profile-info",
@@ -64,26 +58,54 @@ export class ProfileInfoComponent implements OnInit {
   }
 
   changePassword() {
-    let changePass: ChangePasswordRequest = {
-      UserId: localStorage.getItem("userId")!,
-      OldPassword: this.oldPass,
-      NewPassword: this.newPass,
-      UserName: localStorage.getItem("userName")!,
-    };
+    // let changePass: ChangePasswordRequest = {
+    //   UserId: localStorage.getItem("userId")!,
+    //   OldPassword: this.oldPass,
+    //   NewPassword: this.newPass,
+    //   UserName: localStorage.getItem("userName")!,
+    // };
 
     if (this.changePass != this.newPass) {
       console.log("no");
     } else {
       console.log("yes");
+      this.openDialog();
     }
-
-
   }
   openDialog() {
-    this.dialog.open(dialogButtonProfileInfo, {
+    const dialogRef = this.dialog.open(dialogButtonProfileInfo, {
       data: {},
     });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        let changePass: ChangePasswordRequest = {
+          UserId: localStorage.getItem("userId")!,
+          OldPassword: this.oldPass,
+          NewPassword: this.newPass,
+          UserName: localStorage.getItem("userName")!,
+        };
+        this.service.postChangePasswordApi(changePass).subscribe((response) => {
+          if (response.IsSuccess) {
+            this.dialog.open(dialogComfirm, {
+              data: true,
+            });
+          } else {
+            this.dialog.open(dialogComfirm, {
+              data: false,
+            });
+          }
+        });
+      }
+    });
   }
+}
+
+@Component({
+  selector: "dialog-comfirm",
+  templateUrl: "dialog-comfirm.html",
+})
+export class dialogComfirm {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }
 
 @Component({
@@ -91,6 +113,15 @@ export class ProfileInfoComponent implements OnInit {
   templateUrl: "dialog-button-profile-info.html",
 })
 export class dialogButtonProfileInfo {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: dialogButtonProfileInfo) {}
+  constructor(
+    public dialogRef: MatDialogRef<dialogButtonProfileInfo>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+  onNoClick() {
+    this.dialogRef.close(false);
+  }
+  confirm() {
+    this.dialogRef.close(true);
+  }
 }
 export class profileInfo {}

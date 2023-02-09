@@ -11,7 +11,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { LayoutModule } from "@angular/cdk/layout";
 
-import { ProfileInfoComponent } from "./profile-info.component";
+import { dialogComfirm, ProfileInfoComponent } from "./profile-info.component";
 
 const routes: Routes = [
   {
@@ -36,6 +36,7 @@ const routes: Routes = [
     MatGridListModule,
     LayoutModule,
   ],
-  declarations: [ProfileInfoComponent],
+  declarations: [ProfileInfoComponent,dialogComfirm
+],
 })
 export class ProfileInfoModule {}
