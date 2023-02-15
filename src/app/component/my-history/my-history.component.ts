@@ -81,10 +81,11 @@ export class MyHistoryComponent implements OnInit {
     );
 
     this.httpservice
-      .GetDepressionTestByTeacher(endDate ?? "", startDate ?? "")
+      .GetDepressionTestByTeacher(startDate ?? "", endDate ?? "")
       .subscribe(
         (response) => {
           this.dataSourceForTecher = new MatTableDataSource(response);
+          console.log(response);
         },
         (error) => {
           console.log(error);
@@ -102,9 +103,10 @@ export class MyHistoryComponent implements OnInit {
       this.range.value.end,
       "yyyy-MM-dd h:mm:ss"
     );
+
     if (localStorage.getItem("roleName") == "Student") {
       this.httpservice
-        .GetDepressionTestByStudent(id, endDate ?? "", startDate ?? "")
+        .GetDepressionTestByStudent(id, startDate ?? "", endDate ?? "")
         .subscribe(
           (response) => {
             this.dataSource = new MatTableDataSource(response);
@@ -131,19 +133,21 @@ export class MyHistoryComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  openDialog(studentId: string): void {
+  openDialog(id: string): void {
     const dialogRef = this.dialog.open(DialogComment, {
-      data: { studentId: studentId },
+      data: { studentId: id },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         let comfirmed: EditCommentRequest = {
-          id: studentId,
+          id: id,
           comment: result ?? "",
         };
         this.httpservice.PostEditComment(comfirmed).subscribe((response) => {
           if (response) {
+           this.callDataForTeacher()
+            
           }
         });
       }

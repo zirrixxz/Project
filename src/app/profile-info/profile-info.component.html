@@ -1,51 +1,80 @@
-<mat-card-title style="font-weight: bold;">{{fName}} {{lName}}</mat-card-title>
+<!-- <mat-card-title class="textuser">{{fName}} {{lName}}</mat-card-title>
 <mat-card-subtitle>Edit your password and check your profile</mat-card-subtitle>
-
+ -->
 
 
 <div class="card-container">
   <mat-card class="mat-card1" fxLayout="row" fxLayoutAlign="space-around center">
+    <div class="textuser">
+      <mat-card-title style="font-size: xx-large;">{{fName}} {{lName}}</mat-card-title>
+      <mat-card-subtitle>Edit your password and check your profile</mat-card-subtitle>
+    </div>
+    <hr class="solid">
     <div fxLayout="row" fxLayoutAlign="space-around center">
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">Username: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">USERNAME: </p>
         <p style="flex-basis: 80%;">{{username}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">Role: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">ROLE: </p>
         <p style="flex-basis: 80%;">{{roleName}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">First name: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">FIRSTNAME: </p>
         <p style="flex-basis: 80%;">{{fName}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">Last name: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">LASTNAME: </p>
         <p style="flex-basis: 80%;">{{lName}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">age: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">AGES: </p>
         <p style="flex-basis: 80%;">{{age}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">date Of Birth: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">DATE OF BIRTH: </p>
         <p style="flex-basis: 80%;">{{dateOfBirth | date:'mediumDate'}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">year: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">YEAR: </p>
         <p style="flex-basis: 80%;">{{year}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">faculty: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">FACULTY: </p>
         <p style="flex-basis: 80%;">{{faculty}}</p>
       </div>
       <div style="display: flex; flex-direction: row; margin-left: 20px;">
-        <p style="flex-basis: 20%; font-weight: bold;">phone number: </p>
+        <p style="flex-basis: 20%; font-weight: bold;">PHONE NUMBER: </p>
         <p style="flex-basis: 80%;">{{phoneNumber}}</p>
       </div>
+      <hr class="solid">
+      <mat-card-title style="font-size:large;margin:20px;">Change password part</mat-card-title>
+      <div class="col-sm">
+        <mat-form-field class="grid-item" appearance="outline" style="width: 40%;">
+          <mat-label>Your old password</mat-label>
+          <input matInput [(ngModel)]="oldPass">
+        </mat-form-field>
+        <mat-form-field class="grid-item" appearance="outline" style="width: 40%;">
+          <mat-label>New Password</mat-label>
+          <input matInput [(ngModel)]="newPass" [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        
+        </mat-form-field>
+
+        <mat-form-field class="grid-item" appearance="outline" style="width: 40%;">
+          <mat-label>Confirm your Password</mat-label>
+          <input matInput [(ngModel)]="changePass" [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+       
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" (click)="changePassword()">save</button>
+
     </div>
   </mat-card>
 
-  <mat-card class="mat-card2">
+  <!-- <mat-card class="mat-card2">
     <div class="col-sm">
 
       <mat-form-field class="grid-item" appearance="fill" style="width: 80%;">
@@ -67,6 +96,6 @@
       </div>
     </div>
 
-  </mat-card>
+  </mat-card> -->
 
 </div>

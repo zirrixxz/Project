@@ -113,9 +113,11 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="Comment">
       <th mat-header-cell *matHeaderCellDef> follow up </th>
-      <td mat-cell *matCellDef="let element"> <button mat-raised-button
-          (click)="openDialog(element.userId)">Comment</button> </td>
-
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button class="buttonforteacher" (click)="openDialog(element.id)">Comment</button>
+        <p class="box">{{element.comment}}</p>
+      </td>
+    
     </ng-container>
 
 

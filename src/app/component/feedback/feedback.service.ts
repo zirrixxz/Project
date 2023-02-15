@@ -6,7 +6,7 @@ import { Result, AddFeedbackMessageRequest } from "./feedback.type";
   providedIn: "root",
 })
 export class FeedbackService {
-  private rootURL = "https://localhost:7141/";
+  private rootURL = "https://localhost:8081/";
   constructor(private http: HttpClient) {}
 
   postAddFeedback(addFeedbackMessageRequest: AddFeedbackMessageRequest) {

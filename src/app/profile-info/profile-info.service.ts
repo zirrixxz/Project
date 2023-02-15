@@ -7,7 +7,7 @@ import { ChangePasswordRequest, Result, User } from "./profile-info.type";
   providedIn: "root",
 })
 export class ProfileInfoService {
-  private rootURL = "https://localhost:7141/";
+  private rootURL = "https://localhost:8081/";
   constructor(private http: HttpClient) {}
   postChangePasswordApi(changepassword: ChangePasswordRequest) {
     return this.http.post<Result>(

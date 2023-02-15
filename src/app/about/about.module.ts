@@ -5,13 +5,11 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { AboutComponent } from "./about.component";
 
+
 const routes: Routes = [
   {
     path: "",
-    data: {
-      title: "About",
-      urls: [{ title: "About", url: "/about" }, { title: "About" }],
-    },
+
     component: AboutComponent,
   },
 ];
@@ -22,6 +20,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     CommonModule,
     RouterModule.forChild(routes),
+   
   ],
   declarations: [],
 })

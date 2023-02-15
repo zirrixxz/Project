@@ -10,6 +10,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { LayoutModule } from "@angular/cdk/layout";
+import {MatIconModule} from '@angular/material/icon';
 
 import { dialogComfirm, ProfileInfoComponent } from "./profile-info.component";
 
@@ -35,6 +36,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatGridListModule,
     LayoutModule,
+    MatIconModule
   ],
   declarations: [ProfileInfoComponent,dialogComfirm
 ],

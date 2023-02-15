@@ -30,6 +30,9 @@ export class ProfileInfoComponent implements OnInit {
   oldPass: string = "";
   newPass: string = "";
   changePass: string = "";
+
+  hide = true;
+
   constructor(
     public dialog: MatDialog,
     private service: ProfileInfoService,
@@ -58,13 +61,6 @@ export class ProfileInfoComponent implements OnInit {
   }
 
   changePassword() {
-    // let changePass: ChangePasswordRequest = {
-    //   UserId: localStorage.getItem("userId")!,
-    //   OldPassword: this.oldPass,
-    //   NewPassword: this.newPass,
-    //   UserName: localStorage.getItem("userName")!,
-    // };
-
     if (this.changePass != this.newPass) {
       console.log("no");
     } else {
@@ -73,9 +69,7 @@ export class ProfileInfoComponent implements OnInit {
     }
   }
   openDialog() {
-    const dialogRef = this.dialog.open(dialogButtonProfileInfo, {
-      data: {},
-    });
+    const dialogRef = this.dialog.open(dialogButtonProfileInfo);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         let changePass: ChangePasswordRequest = {
@@ -85,12 +79,18 @@ export class ProfileInfoComponent implements OnInit {
           UserName: localStorage.getItem("userName")!,
         };
         this.service.postChangePasswordApi(changePass).subscribe((response) => {
-          if (response.IsSuccess) {
+          if (response.isSuccess) {
+            console.log(response.isSuccess);
+
             this.dialog.open(dialogComfirm, {
+              height: "50%",
+              width: "40%",
               data: true,
             });
           } else {
             this.dialog.open(dialogComfirm, {
+              height: "50%",
+              width: "40%",
               data: false,
             });
           }
@@ -103,9 +103,10 @@ export class ProfileInfoComponent implements OnInit {
 @Component({
   selector: "dialog-comfirm",
   templateUrl: "dialog-comfirm.html",
+  styleUrls: ["./profile-info.component.scss"],
 })
 export class dialogComfirm {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: boolean) {}
 }
 
 @Component({
@@ -115,7 +116,7 @@ export class dialogComfirm {
 export class dialogButtonProfileInfo {
   constructor(
     public dialogRef: MatDialogRef<dialogButtonProfileInfo>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: boolean
   ) {}
   onNoClick() {
     this.dialogRef.close(false);

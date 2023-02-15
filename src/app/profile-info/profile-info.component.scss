@@ -16,6 +16,8 @@
 .grid-item {
   padding: 1rem;
   height: 4rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .grid {
@@ -34,9 +36,6 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
-.mat-button {
-  margin-top: 20px;
-}
 
 .card-container {
   width: 100%;
@@ -46,12 +45,40 @@
   align-items: center;
 }
 .mat-card1 {
-  margin-top: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
 }
 .mat-card2 {
-  margin-top: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
+}
+.textuser {
+  margin: 20px;
+}
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+.mat-raised-button {
+  margin: 30px;
+  font-size: large;
+  align-items: right;
+  padding: 7px 150px;
+}
+.icon-display {
+  transform: scale(7);
+  color: red;
+  margin-top: 110px;
+}
+.textoop {
+  text-align: center;
+  margin-top: 70px;
+  font-weight: bold;
+  font-size: 350%;
+}
+.icon-display-success {
+  transform: scale(8);
+  color: green;
+  margin-top: 110px;
 }

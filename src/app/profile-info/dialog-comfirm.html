@@ -1,5 +1,14 @@
-<div>
-  <div *ngIf="data">Change password Success!</div>
-  <div *ngIf="!data">something went wrong,please try again.</div>
+<div style="overflow: auto;">
+  <div class=" text-center" *ngIf="data">
+    <mat-icon class="icon-display-success">done_outline</mat-icon>
+    <p class="textoop">Yeah!</p>
+    <p style="font-size: larger;"> Change password Success!</p>
+  </div>
+  <div class=" text-center" *ngIf="!data">
+    <mat-icon class="icon-display">highlight_off</mat-icon>
+
+    <p class="textoop">Oop...</p>
+    <p style="font-size: larger;">something went wrong,please try again.</p>
+  </div>
 
 </div>

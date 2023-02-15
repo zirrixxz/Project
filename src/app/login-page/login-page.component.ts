@@ -12,6 +12,7 @@ import { LoginReq } from "./login-page.type";
 export class LoginPageComponent implements OnInit {
   username: string = "";
   password: string = "";
+  hide = true;
 
   loginFormControl = new FormGroup({
     username: new FormControl("", Validators.required),

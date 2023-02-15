@@ -14,7 +14,7 @@ export interface Result {
   oldpassword: string;
   newpassword: string;
   Message: string;
-  IsSuccess: boolean;
+  isSuccess: boolean;
 }
 export interface ChangePasswordRequest {
   UserId: string;
