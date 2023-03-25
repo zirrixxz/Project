@@ -24,10 +24,6 @@ export class DepressionTestService {
   }
 
 
-//   postLoginApi(login:LoginReq) {
-//     return this.http.post<LoginResult>(this.rootURL + "api/User/Login",login);
-// }
-
   GetDepressionTestByStudent(userId: string) {
     return this.http.get<DepressionTestRes[]>(
       this.rootURL +

@@ -45,7 +45,7 @@ export class MyHistoryComponent implements OnInit {
   displayedColumns: string[] = [
     "Score",
     "Level",
-    "Comment",
+    
     "Last Updated",
     "Test Date",
   ];

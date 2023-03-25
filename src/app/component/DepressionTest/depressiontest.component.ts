@@ -13,7 +13,6 @@ import { NavigationExtras, Router } from "@angular/router";
 
 import { FeedbackService } from "../feedback/feedback.service";
 
-
 @Component({
   templateUrl: "depressiontest.component.html",
   styleUrls: ["depressiontest.component.css"],
@@ -45,13 +44,12 @@ export class DepressionTestComponent implements OnInit {
   nines: string[] = ["0", "1", "2", "3"];
   favten: string = "";
   tens: string[] = [
-    "Not difficult",
-    "Somewhat difficult",
-    "Very difficult",
-    "Extremely difficult",
+    "ไม่มีปัญหาเลย",
+    "มีปัญหาบ้าง",
+    "มีปัญหามาก",
+    "มีปัญหามากที่สุด",
   ];
 
- 
   score: number = 0;
   feedback: string = "";
   constructor(
@@ -62,8 +60,6 @@ export class DepressionTestComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
-
 
   getResult() {
     this.score = 0;
@@ -109,7 +105,6 @@ export class DepressionTestComponent implements OnInit {
     feedback: new FormControl(""),
   });
   openDialog() {
-
     this.dialog
       .open(dialogOverview, {
         data: {
@@ -168,12 +163,10 @@ export class DepressionTestComponent implements OnInit {
       result = false;
     }
 
-    
     if (result === false) {
       this.dialog.open(dialogChecknull, {}).afterClosed();
     } else {
       this.openDialog();
-      
     }
   }
 }
@@ -186,9 +179,7 @@ export class dialogOverview {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<dialogOverview>
-  ) {
-    
-  }
+  ) {}
   confirm() {
     this.dialogRef.close(true);
   }

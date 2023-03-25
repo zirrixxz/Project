@@ -1,11 +1,9 @@
-<h2 style="margin-top: 20px;margin-bottom:20px;">Depression Assessment Form PATIENT HEALTH QUESTIONNAIRE-9 (PHQ-9) </h2>
-
 <mat-stepper linear #stepper>
 
 
 
 
-  <mat-step label="Take a test">
+  <mat-step label="เริ่มต้นการทำแบบทดสอบ">
 
     <!-- <ng-template matStepLabel>Take a Test</ng-template> -->
     <div class="row">
@@ -22,16 +20,21 @@
         <div class="card">
           <div class="border-bottom p-3">
 
-            <h4 class="card-title mb-0">Counseling</h4>
 
-            <small class="text-muted fs-3">PATIENT HEALTH QUESTIONNAIRE-9 (PHQ-9)
-              Over the last 2 weeks, how often have you been bothered
-              by any of the following problems?
-              (Use “✔” to indicate your answer)
-            </small>
+            <h4 class=" fs-3" style="text-align: center;">ยินดีต้อนรับสู่แบบทดสอบการให้คำปรึกษา
+
+              คำถามสุขภาพของผู้ป่วย-9 (PHQ-9)
+            </h4>
+            <h6 class="text-muted" style="text-align: center;">โปรดใส่คะแนนให้ตรงกับคำตอบของท่าน
+
+              (เกณฑ์ให้คะแนน : ไม่เลย = 0, มีบางวันหรือไม่บ่อย = 1, มีค่อนข้างบ่อย = 2, มีเกือบทุกวัน = 3)
+            </h6>
+            <h6 class="text-muted" style="text-align: center;"> ในช่วง 2
+              สัปดาห์ที่ผ่านมา คุณมีปัญหาต่อไปนี้บ่อยเพียงใด (ใช้ “✔”
+              เพื่อระบุคำตอบของคุณ)
+            </h6>
           </div>
-          <label class="radio" id="example-radio-group-label">1. Little interest or pleasure in doing things
-            (เบื่อ ทำอะไร ๆ ก็ไม่เพลิดเพลิน)</label>
+          <label class="radio" id="example-radio-group-label"> 1. เบื่อ ทำอะไร ๆ ก็ไม่เพลิดเพลิน</label>
 
 
           <mat-radio-group [(ngModel)]="favfirst" class="example-radio-group">
@@ -47,8 +50,8 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">2. Feeling down, depressed, or hopeless (ไม่สบายใจ
-            ซึมเศร้า หรือท้อแท้)</label>
+          <label class="radio" id="example-radio-group-label"> 2. ไม่สบายใจ
+            ซึมเศร้า หรือท้อแท้</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favsecond" class="example-radio-group">
 
@@ -62,8 +65,7 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">3. Trouble falling or staying asleep, or sleeping too much
-            ( หลับยาก หรือหลับ ๆ ตื่น ๆ หรือหลับมากไป)</label>
+          <label class="radio" id="example-radio-group-label">3. หลับยาก หรือหลับ ๆ ตื่น ๆ หรือหลับมากไป</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favthird" class="example-radio-group">
 
@@ -77,8 +79,8 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">4. Feeling tired or having little energy ( เหนื่อยง่าย
-            หรือไม่ค่อยมีแรง)</label>
+          <label class="radio" id="example-radio-group-label"> 4. เหนื่อยง่าย
+            หรือไม่ค่อยมีแรง</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favfour" class="example-radio-group">
 
@@ -91,8 +93,8 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">5. Poor appetite or overeating ( เบื่ออาหาร
-            หรือกินมากเกินไป)</label>
+          <label class="radio" id="example-radio-group-label">5. เบื่ออาหาร
+            หรือกินมากเกินไป</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favfive" class="example-radio-group">
 
@@ -105,9 +107,9 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">6. Feeling bad about yourself — or that you are a failure
-            or have let yourself or your family down ( รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลว หรือเป็นคนทำให้ตัวเอง
-            หรือครอบครัวผิดหวัง)</label>
+          <label class="radio" id="example-radio-group-label"> 6. รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลว
+            หรือเป็นคนทำให้ตัวเอง
+            หรือครอบครัวผิดหวัง</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favsix" class="example-radio-group">
 
@@ -120,9 +122,8 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">7. Trouble concentrating on things, such as reading the
-            newspaper or watching television (สมาธิไม่ดีเวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ
-            หรือทำงานท่ีต้องใช้ความตั้งใจ)</label>
+          <label class="radio" id="example-radio-group-label">7. สมาธิไม่ดีเวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ
+            หรือทำงานท่ีต้องใช้ความตั้งใจ</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favseven" class="example-radio-group">
 
@@ -135,9 +136,8 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">8. Moving or speaking so slowly that other people could
-            have noticed? Or the opposite — being so fidgety or restless that you have been moving around a lot more
-            than usual (พูดหรือทำอะไรช้าจนคนอื่นมองเห็น หรือกระสับกระส่ายจนท่านอยู่ไม่นิ่งเหมือนเคย))</label>
+          <label class="radio" id="example-radio-group-label"> 8.พูดหรือทำอะไรช้าจนคนอื่นมองเห็น
+            หรือกระสับกระส่ายจนท่านอยู่ไม่นิ่งเหมือนเคย</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="faveight" class="example-radio-group">
 
@@ -151,8 +151,7 @@
 
 
 
-          <label class="radio" id="example-radio-group-label">9. Thoughts that you would be better off dead or of
-            hurting yourself in some way (คิดทำร้ายตนเอง หรือคิดว่าถ้าตาย ๆ ไปเสียคงจะดี)</label>
+          <label class="radio" id="example-radio-group-label"> 9. คิดทำร้ายตนเอง หรือคิดว่าถ้าตาย ๆ ไปเสียคงจะดี</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favnine" class="example-radio-group">
 
@@ -166,9 +165,8 @@
 
 
 
-          <label class="radio" id="example-radio-group-label"> If you checked off any problems, how difficult have these
-            problems made it for you to do your work, take care of things at home, or get along with other people?
-            (หากคุณตรวจสอบปัญหาใด ๆ ปัญหาเหล่านี้ทำให้คุณทำงาน ดูแลบ้าน หรือเข้าสังคมได้ยากเพียงใด?)</label>
+          <label class="radio" id="example-radio-group-label"> ถ้าท่านตอบว่ามีอาการไม่ว่าในข้อใดก็ตาม อาการนั้นๆ
+            ทำให้ท่านมีปัญหาในการทำงาน การดูแลสิ่งต่างๆ ในบ้าน หรือการเข้ากับผู้คน หรือไม่</label>
           <div class="w-fit">
             <mat-radio-group [(ngModel)]="favten" class="example-radio-group">
 
@@ -182,13 +180,13 @@
       </div>
     </div>
     <div>
-      <button class="btn btn-pre" mat-button matStepperPrevious>Back</button>
-      <button class="btn btn-next" mat-button matStepperNext>Next</button>
+      <button class="btn btn-pre" mat-button matStepperPrevious>กลับ</button>
+      <button class="btn btn-next" mat-button matStepperNext>ถัดไป</button>
       <!-- <button class="btn" mat-button (click)='submit()'>Next</button> -->
     </div>
   </mat-step>
 
-  <mat-step label="Checked">
+  <mat-step label="ตรวจสอบและเสนอแนะ">
     <div class="row">
 
 
@@ -200,14 +198,14 @@
 
         <div class="card w-100">
           <div class="border-bottom p-3">
-            <h4 class="card-title mb-0">Suggestions for assessments and websites</h4>
-            <small class="text-mute">Suggestions for assessments and websites to improve and develop the website for
-              further research</small>
+            <h4 class="card-title mb-0">ข้อเสนอแนะสำหรับการประเมินและเว็บไซต์</h4>
+            <small class="text-mute">ข้อเสนอแนะสำหรับการประเมินและเว็บไซต์เพื่อปรับปรุงและพัฒนาเว็บไซต์สำหรับ
+              การวิจัยต่อไป</small>
           </div>
 
           <form class="example-form" [formGroup]="Feedback">
             <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Suggestions for our websites</mat-label>
+              <mat-label>คำแนะนำสำหรับเว็บไซต์</mat-label>
               <input matInput placeholder=" " formControlName="feedback">
             </mat-form-field>
           </form>
@@ -221,9 +219,9 @@
       </div>
     </div>
     <div>
-      <button class="btn" mat-button (click)="stepper.reset()">Reset</button>
-      <button class="btn btn-pre" mat-button matStepperPrevious>Back</button>
-      <button class="btn" mat-button (click)="submit()">Done</button>
+      <button class="btn" mat-button (click)="stepper.reset()">เริ่มต้นใหม่</button>
+      <button class="btn btn-pre" mat-button matStepperPrevious>ย้อนกลับ</button>
+      <button class="btn" mat-button (click)="submit()">เสร็จสิ้น</button>
     </div>
   </mat-step>
 

@@ -1,12 +1,20 @@
+<br>
+
+<div>
+  <h4 class="card-title" style="font-size: x-large;">Student Level</h4>
+  <h5 class="card-subtitle text-muted">How student working on this test and it coming in level table.</h5>
+</div>
 <div class="row">
   <div class="col-md-6 col-lg-3" *ngFor='let topcard of topcards' style="margin-top: 20px;">
     <div class="card">
       <div class="card-body">
         <div class="d-flex align-items-center">
+
           <div
             class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-{{topcard.bgcolor}} text-{{topcard.bgcolor}}">
             <i class={{topcard.icon}}></i>
           </div>
+
           <div class="ms-3">
             <h3 class="mb-0 font-weight-bold">{{topcard.title}}</h3>
             <small class="text-muted fs-3">{{topcard.subtitle}}</small>
@@ -40,7 +48,7 @@
               </apx-chart>
               <p>Retrospective period: <span *ngIf="isDate">{{i}}</span> <span *ngIf="!isDate">{{m}}</span> days</p>
 
-              <p *ngIf="freqStudent != 0" >Number of students who completed the test: {{freqStudent}}</p>
+              <p *ngIf="freqStudent != 0">Number of students who completed the test: {{freqStudent}}</p>
               <div>
                 <button mat-raised-button class="button1" (click)="getNumDate()">7 days</button>
                 <button mat-raised-button class="button2" (click)="getNumMonth()">30 days</button>
